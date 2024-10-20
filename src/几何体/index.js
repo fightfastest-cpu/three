@@ -4,13 +4,15 @@ import point from './point'
 import line from './line';
 import mesh from './mesh';
 import rect from './rect';
+import pointRect from './point-rect'
+import sphere from './sphere'
 
 
 // 场景
 const sense = new THREE.Scene()
 
 // 盒子
-sense.add(rect)
+sense.add(sphere)
 
 // 坐标系
 const axesHelp = new THREE.AxesHelper(200)
@@ -20,7 +22,7 @@ sense.add(axesHelp)
 // 点光源
 const pointLight = new THREE.PointLight(0xffffff,1.0)
 pointLight.decay = 0 // 光源衰减度  如果是0，表示不衰减
-pointLight.position.set(200,200,200)
+pointLight.position.set(300,300,300)
 sense.add(pointLight)
 
 // 相机
