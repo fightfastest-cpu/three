@@ -16,6 +16,7 @@ sense.add(rect)
 const axesHelp = new THREE.AxesHelper(200)
 sense.add(axesHelp)
 
+
 // 点光源
 const pointLight = new THREE.PointLight(0xffffff,1.0)
 pointLight.decay = 0 // 光源衰减度  如果是0，表示不衰减
