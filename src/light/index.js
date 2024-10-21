@@ -1,8 +1,6 @@
 import  *  as THREE  from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-console.log('111')
-
 
 // 场景
 const sense = new THREE.Scene()
