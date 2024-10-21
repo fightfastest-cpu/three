@@ -11,7 +11,7 @@ const sense = new THREE.Scene()
 const geometry = new THREE.BoxGeometry(50,50,50) //立方体
 // const geometry = new THREE.SphereGeometry(35) //球体
 // const material = new THREE.MeshLambertMaterial({color:0xff0000,transparent:true,opacity:0.9}) //漫反射
-const material = new THREE.MeshPhongMaterial({color:0xff0000,shininess:100,specular:0xffffff})
+const material = new THREE.MeshPhongMaterial({color:0xff0000,shininess:100,specular:0xffffff})//镜面反射
 const mesh = new THREE.Mesh(geometry,material)
 sense.add(mesh)
 
