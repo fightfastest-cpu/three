@@ -7,6 +7,7 @@ let renderer,camera,scene,controls
 initRenderer()
 initCamera()
 initScene()
+initMesh()
 initLight()
 initControls()
 animation()
@@ -23,6 +24,10 @@ function initRenderer() {
 function initScene() {
     scene = new THREE.Scene()
     scene.background = new THREE.Color(0x888888)
+}
+
+function initMesh(){
+
 }
 
 // 初始化相机
