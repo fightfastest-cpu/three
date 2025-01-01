@@ -7,7 +7,7 @@ let renderer,camera,scene
 
 let controls
 
-let CSS2DRender
+let css2DRenderer
 
 initRenderer()
 initCamera()
@@ -40,7 +40,6 @@ function initLight(){
 function initMesh() {
     const loader = new PDBLoader()
     loader.load('static/models/pdb/caffeine.pdb',function (pdb){
-
         //  geometryAtoms: colors ［24］，position ［24］：原子模型的颜色和位置
         // geometryBonds: position ［50］， 25 对化学键
         // json:atoms ［24］，0-2：位置信息，3：颜色，4：label；描述标签的。
@@ -92,6 +91,21 @@ function initMesh() {
             object.lookAt(end)
             scene.add(object)
         }
+    //     json
+        for(let i=0;i<pdb.json.atoms.length;i++){
+            const text = document.createElement('div')
+            const atom = pdb.json.atoms[i]
+            const rgb = `rgb(${atom[3][0]},${atom[3][1]},${atom[3][2]})`
+            text.style.color = rgb
+            text.textContent = atom[4]
+            position.x = atom[0]
+            position.y = atom[1]
+            position.z = atom[2]
+            const label = new CSS2DObject(text)
+            label.position.copy(position)
+            console.log('label', position);
+            scene.add(label)
+        }
     })
 
 }
@@ -103,16 +117,17 @@ function initCamera() {
     camera.lookAt(0,0,0)
 }
 function initCSS2DRenderer(){
-    CSS2DRender = new CSS2DRenderer()
-    CSS2DRender.setSize(window.innerWidth, window.innerHeight)
-    CSS2DRender.domElement.style.position = 'absolute'
-    CSS2DRender.domElement.style.pointerEvents = 'none'
-    document.body.appendChild(CSS2DRender.domElement)
+    css2DRenderer = new CSS2DRenderer()
+    css2DRenderer.setSize(window.innerWidth, window.innerHeight)
+    css2DRenderer.domElement.style.position = 'absolute'
+    css2DRenderer.domElement.style.pointerEvents = 'none'
+    document.body.appendChild(css2DRenderer.domElement)
 
 }
 // 初始化 render函数
 function animation(){
     renderer.render(scene, camera)
+    css2DRenderer.render(scene, camera)
     window.requestAnimationFrame(animation)
 }
 // 初始化控制器
