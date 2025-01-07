@@ -27,7 +27,6 @@ function initScene() {
 }
 
 function initMesh(){
-
 }
 
 // 初始化相机
